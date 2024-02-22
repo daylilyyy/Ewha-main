@@ -4,7 +4,7 @@
 
 > html, Vanilla JS를 이용한 이화여대 마크업 홈페이지입니다.
 >
-> [배포링크](https://chugyeong.github.io/Ewha/pc/)
+> [배포링크](https://daylily-ewha-main.netlify.app/)
 >
 > [기획서](https://chugyeong.github.io/Ewha/worklist)
 >
@@ -24,7 +24,7 @@
 
 <br>
 
-|                            [김기철](https://github.com/habi-er)                             |                          [이원철](https://github.com/daylilyyy/)                           |                         [정종우](https://github.com/honeypunch97)                          |                            [추경](https://github.com/ChuGyeong)                             |
+|                            [김기철](https://github.com/habi-er)                             |                           [이원철](https://github.com/daylilyyy/)                           |                         [정종우](https://github.com/honeypunch97)                          |                            [추경](https://github.com/ChuGyeong)                             |
 | :-----------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: |
 | <img src="https://avatars.githubusercontent.com/u/133613789?v=4" width="100" height="100"/> | <img src="https://avatars.githubusercontent.com/u/126632198?v=4" width="100" height="100"/> | <img src="https://avatars.githubusercontent.com/u/57937641?v=4" width="100" height="100"/> | <img src="https://avatars.githubusercontent.com/u/121862169?v=4" width="100" height="100"/> |
 |                                        **Frontend**                                         |                                        **Frontend**                                         |                                        **Frontend**                                        |                                        **Frontend**                                         |
@@ -76,12 +76,12 @@ EWha
 
 <br>
 
--  2023.04.28~2023.05.01 사이트 선정 및 프로젝트 기획
--  2023.05.02~2023.05.17 홈페이지 구현
--  2023.05.17~2023.05.30 모바일 작업 및 배포
-   ​
-   <br>
-   ​
+- 2023.04.28~2023.05.01 사이트 선정 및 프로젝트 기획
+- 2023.05.02~2023.05.17 홈페이지 구현
+- 2023.05.17~2023.05.30 모바일 작업 및 배포
+  ​
+  <br>
+  ​
 
 ## 5. 사이트 미리보기
 
@@ -111,26 +111,26 @@ EWha
 
 ```js
 const rollingVisualBanner = () => {
-   $visualBannerBox.style.transition = '0.4s';
-   if (visualPrevCnt === 2 && visualCurrentCnt === 0) {
-      $visualBannerBox.style.left = '-400%';
-      setTimeout(() => {
-         $visualBannerBox.style.transition = '0s';
-         $visualBannerBox.style.left = `${slideArr[visualCurrentCnt]}`;
-      }, 400);
-   } else if (visualPrevCnt === 0 && visualCurrentCnt === 2) {
-      $visualBannerBox.style.left = '0';
-      setTimeout(() => {
-         $visualBannerBox.style.transition = '0s';
-         $visualBannerBox.style.left = `${slideArr[visualCurrentCnt]}`;
-      }, 400);
-   } else {
+  $visualBannerBox.style.transition = "0.4s";
+  if (visualPrevCnt === 2 && visualCurrentCnt === 0) {
+    $visualBannerBox.style.left = "-400%";
+    setTimeout(() => {
+      $visualBannerBox.style.transition = "0s";
       $visualBannerBox.style.left = `${slideArr[visualCurrentCnt]}`;
-   }
-   // 페이징
-   $visualPagingLi[visualPrevCnt].classList.remove('on');
-   $visualPagingLi[visualCurrentCnt].classList.add('on');
-   visualPrevCnt = visualCurrentCnt;
+    }, 400);
+  } else if (visualPrevCnt === 0 && visualCurrentCnt === 2) {
+    $visualBannerBox.style.left = "0";
+    setTimeout(() => {
+      $visualBannerBox.style.transition = "0s";
+      $visualBannerBox.style.left = `${slideArr[visualCurrentCnt]}`;
+    }, 400);
+  } else {
+    $visualBannerBox.style.left = `${slideArr[visualCurrentCnt]}`;
+  }
+  // 페이징
+  $visualPagingLi[visualPrevCnt].classList.remove("on");
+  $visualPagingLi[visualCurrentCnt].classList.add("on");
+  visualPrevCnt = visualCurrentCnt;
 };
 ```
 
@@ -140,15 +140,15 @@ rollingVisualBanner 함수는 배너 슬라이드 쇼를 제어합니다. 이전
 ### **실행/중지 버튼 이벤트 리스너**
 
 ```js
-$visualActiveBtn.addEventListener('click', () => {
-   if (visualIsRolling) {
-      clearInterval(visualIntervalId);
-      $visualActiveBtn.children[0].classList.replace('xi-pause', 'xi-play');
-   } else {
-      visualIntervalId = setInterval(visualRolling, 6000);
-      $visualActiveBtn.children[0].classList.replace('xi-play', 'xi-pause');
-   }
-   visualIsRolling = !visualIsRolling;
+$visualActiveBtn.addEventListener("click", () => {
+  if (visualIsRolling) {
+    clearInterval(visualIntervalId);
+    $visualActiveBtn.children[0].classList.replace("xi-pause", "xi-play");
+  } else {
+    visualIntervalId = setInterval(visualRolling, 6000);
+    $visualActiveBtn.children[0].classList.replace("xi-play", "xi-pause");
+  }
+  visualIsRolling = !visualIsRolling;
 });
 ```
 
@@ -157,17 +157,17 @@ $visualActiveBtn.addEventListener('click', () => {
 ### **이전/다음 버튼 이벤트 리스너**
 
 ```js
-$visualPrevBtn.addEventListener('click', () => {
-   visualCurrentCnt = visualCurrentCnt <= 0 ? visualLen - 1 : visualCurrentCnt - 1;
-   rollingVisualBanner();
-   if (visualIsRolling) {
-      clearInterval(visualIntervalId);
-      visualIntervalId = setInterval(visualRolling, 6000);
-   }
+$visualPrevBtn.addEventListener("click", () => {
+  visualCurrentCnt = visualCurrentCnt <= 0 ? visualLen - 1 : visualCurrentCnt - 1;
+  rollingVisualBanner();
+  if (visualIsRolling) {
+    clearInterval(visualIntervalId);
+    visualIntervalId = setInterval(visualRolling, 6000);
+  }
 });
 
-$visualNextBtn.addEventListener('click', () => {
-   // ...
+$visualNextBtn.addEventListener("click", () => {
+  // ...
 });
 ```
 
@@ -176,14 +176,14 @@ $visualNextBtn.addEventListener('click', () => {
 
 ```js
 $visualPagingLi.forEach((item, idx) => {
-   item.addEventListener('click', () => {
-      visualCurrentCnt = idx;
-      rollingVisualBanner();
-      if (visualIsRolling) {
-         clearInterval(visualIntervalId);
-         visualIntervalId = setInterval(visualRolling, 6000);
-      }
-   });
+  item.addEventListener("click", () => {
+    visualCurrentCnt = idx;
+    rollingVisualBanner();
+    if (visualIsRolling) {
+      clearInterval(visualIntervalId);
+      visualIntervalId = setInterval(visualRolling, 6000);
+    }
+  });
 });
 ```
 
@@ -200,21 +200,21 @@ visualIntervalId = setInterval(visualRolling, 6000);
 
 ```js
 const bucheonNowRollingBanner = () => {
-   let num = 300;
-   if (bucheonNowPrevCnt === bucheonNowArr.length - 1 && bucheonNowCurrentCnt === 0) {
-      $bucheonNowRollingBox.style.transition = '0.4s';
-      $bucheonNowRollingBox.style.left = `${-bucheonNowArr[bucheonNowArr.length - 1] - num}px`;
-      // ...
-   } else if (bucheonNowPrevCnt === 0 && bucheonNowCurrentCnt === bucheonNowArr.length - 1) {
-      $bucheonNowRollingBox.style.transition = '0.4s';
-      $bucheonNowRollingBox.style.left = `${bucheonNowArr[0] - num}px`;
-      // ...
-   } else {
-      $bucheonNowRollingBox.style.transition = '0.4s';
-      $bucheonNowRollingBox.style.left = `${-bucheonNowArr[bucheonNowCurrentCnt]}px`;
-   }
-   $bucheonNowPagingLi.style.width = `${25 * (bucheonNowCurrentCnt + 1)}%`;
-   bucheonNowPrevCnt = bucheonNowCurrentCnt;
+  let num = 300;
+  if (bucheonNowPrevCnt === bucheonNowArr.length - 1 && bucheonNowCurrentCnt === 0) {
+    $bucheonNowRollingBox.style.transition = "0.4s";
+    $bucheonNowRollingBox.style.left = `${-bucheonNowArr[bucheonNowArr.length - 1] - num}px`;
+    // ...
+  } else if (bucheonNowPrevCnt === 0 && bucheonNowCurrentCnt === bucheonNowArr.length - 1) {
+    $bucheonNowRollingBox.style.transition = "0.4s";
+    $bucheonNowRollingBox.style.left = `${bucheonNowArr[0] - num}px`;
+    // ...
+  } else {
+    $bucheonNowRollingBox.style.transition = "0.4s";
+    $bucheonNowRollingBox.style.left = `${-bucheonNowArr[bucheonNowCurrentCnt]}px`;
+  }
+  $bucheonNowPagingLi.style.width = `${25 * (bucheonNowCurrentCnt + 1)}%`;
+  bucheonNowPrevCnt = bucheonNowCurrentCnt;
 };
 ```
 
@@ -236,8 +236,8 @@ const bucheonNowReverseRolling = () => {
 이 함수는 다음/이전 배너로 이동하고, 롤링 배너 함수를 호출합니다.
 
 ```js
-$bucheonNowNextBtn.addEventListener('click', bucheonNowRolling);
-$bucheonNowPrevBtn.addEventListener('click', bucheonNowReverseRolling);
+$bucheonNowNextBtn.addEventListener("click", bucheonNowRolling);
+$bucheonNowPrevBtn.addEventListener("click", bucheonNowReverseRolling);
 ```
 
 다음과 이전 버튼을 클릭했을 때 각각 bucheonNowRolling과 bucheonNowReverseRolling 함수를 호출합니다.
@@ -246,30 +246,30 @@ $bucheonNowPrevBtn.addEventListener('click', bucheonNowReverseRolling);
 ### **스크롤 반응형 애니메이션**
 
 ```js
-window.addEventListener('scroll', () => {
-   let scrollStandard = window.innerHeight + window.scrollY - $bucheonNowContent.offsetHeight / 2;
-   if (scrollStandard >= $bucheonNowContent.offsetTop && bucheonNowIsPlayed === false) {
-      $bucheonNowRollingBox.querySelectorAll('li').forEach(item => {
-         let startNum = 999;
-         let goalNum = parseInt(item.dataset.num);
-         let currentNum = parseInt(item.children[1].textContent);
-         let speed = 30;
-         let step = Math.ceil(Math.abs(startNum - goalNum) / 50);
-         let timer = setInterval(() => {
-            if (startNum <= goalNum) {
-               clearInterval(timer);
-               item.children[1].textContent = goalNum;
-            } else {
-               startNum -= step;
-               if (startNum < goalNum) {
-                  startNum = goalNum;
-               }
-               item.children[1].textContent = startNum;
-            }
-         }, speed);
-      });
-      bucheonNowIsPlayed = true;
-   }
+window.addEventListener("scroll", () => {
+  let scrollStandard = window.innerHeight + window.scrollY - $bucheonNowContent.offsetHeight / 2;
+  if (scrollStandard >= $bucheonNowContent.offsetTop && bucheonNowIsPlayed === false) {
+    $bucheonNowRollingBox.querySelectorAll("li").forEach((item) => {
+      let startNum = 999;
+      let goalNum = parseInt(item.dataset.num);
+      let currentNum = parseInt(item.children[1].textContent);
+      let speed = 30;
+      let step = Math.ceil(Math.abs(startNum - goalNum) / 50);
+      let timer = setInterval(() => {
+        if (startNum <= goalNum) {
+          clearInterval(timer);
+          item.children[1].textContent = goalNum;
+        } else {
+          startNum -= step;
+          if (startNum < goalNum) {
+            startNum = goalNum;
+          }
+          item.children[1].textContent = startNum;
+        }
+      }, speed);
+    });
+    bucheonNowIsPlayed = true;
+  }
 });
 ```
 
@@ -288,21 +288,21 @@ window.addEventListener('scroll', () => {
 
 ```js
 $gnbChild.forEach((item, idx) => {
-   item.addEventListener('mouseenter', e => {
-      $gnbChildA[idx].style.color = '#A4B8AF';
-   });
-   item.addEventListener('mouseleave', e => {
-      $gnbChildA[idx].style.color = '#fff';
-   });
+  item.addEventListener("mouseenter", (e) => {
+    $gnbChildA[idx].style.color = "#A4B8AF";
+  });
+  item.addEventListener("mouseleave", (e) => {
+    $gnbChildA[idx].style.color = "#fff";
+  });
 });
 
-$gnbLi.forEach(liItem => {
-   liItem.addEventListener('mouseenter', e => {
-      $bottomHeader.classList.add('on');
-   });
-   liItem.addEventListener('mouseleave', e => {
-      $bottomHeader.classList.remove('on');
-   });
+$gnbLi.forEach((liItem) => {
+  liItem.addEventListener("mouseenter", (e) => {
+    $bottomHeader.classList.add("on");
+  });
+  liItem.addEventListener("mouseleave", (e) => {
+    $bottomHeader.classList.remove("on");
+  });
 });
 ```
 
@@ -311,8 +311,8 @@ $gnbLi.forEach(liItem => {
 ### **스크롤 이벤트 처리**
 
 ```js
-$topBtn.addEventListener('click', e => {
-   window.scrollTo({ top: 0, behavior: 'smooth' });
+$topBtn.addEventListener("click", (e) => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });
 ```
 
@@ -321,22 +321,22 @@ $topBtn.addEventListener('click', e => {
 ### **버튼 클릭 이벤트 리스너 및 내용 펼침/접힘**
 
 ```js
-$closeBtn.addEventListener('click', e => {
-   $topFooter.classList.toggle('folded');
-   if ($topFooter.classList.contains('folded')) {
-      $topH.style.transform = 'translateY(0)';
-      $closeBtni.classList.replace('xi-angle-down', 'xi-angle-up');
-      $topHide.forEach(item => {
-         item.style.display = 'none';
-      });
-   } else {
-      $closeBtni.classList.replace('xi-angle-up', 'xi-angle-down');
-      $topHide.forEach(item => {
-         item.style.display = 'block';
-         $topH.style.transform = 'translateY(-30px)';
-         item.animate([{ opacity: 0 }, { opacity: 1 }], 500);
-      });
-   }
+$closeBtn.addEventListener("click", (e) => {
+  $topFooter.classList.toggle("folded");
+  if ($topFooter.classList.contains("folded")) {
+    $topH.style.transform = "translateY(0)";
+    $closeBtni.classList.replace("xi-angle-down", "xi-angle-up");
+    $topHide.forEach((item) => {
+      item.style.display = "none";
+    });
+  } else {
+    $closeBtni.classList.replace("xi-angle-up", "xi-angle-down");
+    $topHide.forEach((item) => {
+      item.style.display = "block";
+      $topH.style.transform = "translateY(-30px)";
+      item.animate([{ opacity: 0 }, { opacity: 1 }], 500);
+    });
+  }
 });
 ```
 
@@ -358,22 +358,22 @@ $closeBtn.addEventListener('click', e => {
 ### **탭 클릭 이벤트 리스너 및 탭 내용 표시/숨김**
 
 ```js
-$universityHistoryTab.forEach(item => {
-   item.addEventListener('click', () => {
-      $universityHistoryTab.forEach(clickTab => {
-         clickTab.classList.remove('on');
-      });
-      item.classList.add('on');
-   });
+$universityHistoryTab.forEach((item) => {
+  item.addEventListener("click", () => {
+    $universityHistoryTab.forEach((clickTab) => {
+      clickTab.classList.remove("on");
+    });
+    item.classList.add("on");
+  });
 });
 
-$universityHistoryTab[0].addEventListener('click', () => {
-   $universityHistoryYHSE.style.display = 'block';
-   $universityHistoryYS.style.display = 'none';
+$universityHistoryTab[0].addEventListener("click", () => {
+  $universityHistoryYHSE.style.display = "block";
+  $universityHistoryYS.style.display = "none";
 });
-$universityHistoryTab[1].addEventListener('click', () => {
-   $universityHistoryYHSE.style.display = 'none';
-   $universityHistoryYS.style.display = 'block';
+$universityHistoryTab[1].addEventListener("click", () => {
+  $universityHistoryYHSE.style.display = "none";
+  $universityHistoryYS.style.display = "block";
 });
 ```
 
@@ -388,15 +388,15 @@ $universityHistoryTab[1].addEventListener('click', () => {
 ### **비주얼 이미지 슬라이드**
 
 ```js
-$presidentsSlide.style.transition = '0.5s';
+$presidentsSlide.style.transition = "0.5s";
 $presidentsSlide.style.left = `${presidentsOfficeCurrent * -100}%`;
-$presidentsOfficeBtn[presidentsOfficeOld].classList.remove('on');
-$presidentsOfficeBtn[presidentsOfficeCurrent].classList.add('on');
+$presidentsOfficeBtn[presidentsOfficeOld].classList.remove("on");
+$presidentsOfficeBtn[presidentsOfficeCurrent].classList.add("on");
 
 if (presidentsOfficeCurrent < $presidentsSlideList.length - 1) {
-   presidentsOfficeCurrent++;
+  presidentsOfficeCurrent++;
 } else {
-   presidentsOfficeCurrent = 0;
+  presidentsOfficeCurrent = 0;
 }
 visual();
 ```
@@ -438,7 +438,7 @@ presidentsOfficeTimeID = setInterval(rolling, 3000);
 
 ```js
 let universityArr = [
-   /* 대학 데이터 */
+  /* 대학 데이터 */
 ];
 ```
 
@@ -447,13 +447,13 @@ universityArr 배열에 대학별 관련 정보를 저장합니다. 이 배열�
 ### **대학 리스트 생성 함수**
 
 ```js
-const pageOpening = arr => {
-   arr.forEach(item => {
-      // DOM 요소 생성 및 클래스 추가
-      // DOM 요소에 데이터 바인딩 및 추가
-      // 학부 목록 생성
-      // DOM 요소를 페이지에 추가
-   });
+const pageOpening = (arr) => {
+  arr.forEach((item) => {
+    // DOM 요소 생성 및 클래스 추가
+    // DOM 요소에 데이터 바인딩 및 추가
+    // 학부 목록 생성
+    // DOM 요소를 페이지에 추가
+  });
 };
 ```
 
@@ -463,16 +463,16 @@ const pageOpening = arr => {
 
 ```js
 const scrollOpening = () => {
-   let windowHeight = window.innerHeight;
-   let screenTop = window.scrollY;
-   let screenBottom = screenTop + windowHeight - 250;
-   let $sections = getAll('.university .univ-list li');
-   $sections.forEach(item => {
-      if (screenBottom >= item.offsetTop) {
-         item.style.opacity = '1';
-         item.style.transform = 'translateY(0)';
-      }
-   });
+  let windowHeight = window.innerHeight;
+  let screenTop = window.scrollY;
+  let screenBottom = screenTop + windowHeight - 250;
+  let $sections = getAll(".university .univ-list li");
+  $sections.forEach((item) => {
+    if (screenBottom >= item.offsetTop) {
+      item.style.opacity = "1";
+      item.style.transform = "translateY(0)";
+    }
+  });
 };
 ```
 
@@ -483,7 +483,7 @@ const scrollOpening = () => {
 ```js
 pageOpening(universityArr);
 scrollOpening();
-window.addEventListener('scroll', scrollOpening);
+window.addEventListener("scroll", scrollOpening);
 ```
 
 pageOpening 함수를 호출하여 페이지에 대학 목록을 생성하고, scrollOpening 함수를 호출하여 초기 애니메이션을 처리합니다. 또한 스크롤 이벤트 리스너를 등록하여 사용자의 스크롤 동작을 감지하고 애니메이션을 적용합니다.
@@ -498,31 +498,31 @@ pageOpening 함수를 호출하여 페이지에 대학 목록을 생성하고, s
 
 ```js
 const graduatePageBanner = () => {
-   const $bannerPaging = getAll('.banner .paging li');
-   const $bannerImgs = getAll('.banner .banner-box li');
-   let bannerCurrentCnt = 0;
-   let bannerPrevCnt = 0;
-   let bannerIntervalID = null;
-   const bannerRolling = () => {
-      $bannerPaging[bannerPrevCnt].classList.remove('on');
-      $bannerPaging[bannerCurrentCnt].classList.add('on');
-      $bannerImgs[bannerPrevCnt].classList.remove('on');
-      $bannerImgs[bannerCurrentCnt].classList.add('on');
-      bannerPrevCnt = bannerCurrentCnt;
-   };
-   const bannerInterval = () => {
-      bannerCurrentCnt = bannerCurrentCnt >= $bannerPaging.length - 1 ? 0 : bannerCurrentCnt + 1;
+  const $bannerPaging = getAll(".banner .paging li");
+  const $bannerImgs = getAll(".banner .banner-box li");
+  let bannerCurrentCnt = 0;
+  let bannerPrevCnt = 0;
+  let bannerIntervalID = null;
+  const bannerRolling = () => {
+    $bannerPaging[bannerPrevCnt].classList.remove("on");
+    $bannerPaging[bannerCurrentCnt].classList.add("on");
+    $bannerImgs[bannerPrevCnt].classList.remove("on");
+    $bannerImgs[bannerCurrentCnt].classList.add("on");
+    bannerPrevCnt = bannerCurrentCnt;
+  };
+  const bannerInterval = () => {
+    bannerCurrentCnt = bannerCurrentCnt >= $bannerPaging.length - 1 ? 0 : bannerCurrentCnt + 1;
+    bannerRolling();
+  };
+  $bannerPaging.forEach((item, idx) => {
+    item.addEventListener("click", () => {
+      bannerCurrentCnt = idx;
       bannerRolling();
-   };
-   $bannerPaging.forEach((item, idx) => {
-      item.addEventListener('click', () => {
-         bannerCurrentCnt = idx;
-         bannerRolling();
-         clearInterval(bannerIntervalID);
-         bannerIntervalID = setInterval(bannerInterval, 5000);
-      });
-   });
-   bannerIntervalID = setInterval(bannerInterval, 5000);
+      clearInterval(bannerIntervalID);
+      bannerIntervalID = setInterval(bannerInterval, 5000);
+    });
+  });
+  bannerIntervalID = setInterval(bannerInterval, 5000);
 };
 ```
 
@@ -532,31 +532,31 @@ const graduatePageBanner = () => {
 
 ```js
 const graduatePageNotice = () => {
-   const $noticeMenu = getAll('.notice .menu-bar .menu-list li');
-   const $noticeContentBox = get('.graduate-page .notice .content-box');
-   let noticeArr = [
-      // 데이터 생성
-   ];
-   let noticeCurrentCnt = 0;
-   let noticePrevCnt = 0;
-   $noticeMenu.forEach((item, idx) => {
-      item.addEventListener('click', () => {
-         noticeCurrentCnt = idx;
-         $noticeMenu[noticePrevCnt].classList.remove('on');
-         $noticeMenu[noticeCurrentCnt].classList.add('on');
-         $noticeContentBox.innerHTML = '';
-         for (let i = 0; i < noticeArr[idx].content.length; i++) {
-            let tempLi = document.createElement('li');
-            let tempContent = document.createElement('strong');
-            let tempDate = document.createElement('em');
-            tempContent.textContent = noticeArr[idx].content[i];
-            tempDate.textContent = noticeArr[idx].date[i];
-            tempLi.append(tempContent, tempDate);
-            $noticeContentBox.append(tempLi);
-         }
-         noticePrevCnt = noticeCurrentCnt;
-      });
-   });
+  const $noticeMenu = getAll(".notice .menu-bar .menu-list li");
+  const $noticeContentBox = get(".graduate-page .notice .content-box");
+  let noticeArr = [
+    // 데이터 생성
+  ];
+  let noticeCurrentCnt = 0;
+  let noticePrevCnt = 0;
+  $noticeMenu.forEach((item, idx) => {
+    item.addEventListener("click", () => {
+      noticeCurrentCnt = idx;
+      $noticeMenu[noticePrevCnt].classList.remove("on");
+      $noticeMenu[noticeCurrentCnt].classList.add("on");
+      $noticeContentBox.innerHTML = "";
+      for (let i = 0; i < noticeArr[idx].content.length; i++) {
+        let tempLi = document.createElement("li");
+        let tempContent = document.createElement("strong");
+        let tempDate = document.createElement("em");
+        tempContent.textContent = noticeArr[idx].content[i];
+        tempDate.textContent = noticeArr[idx].date[i];
+        tempLi.append(tempContent, tempDate);
+        $noticeContentBox.append(tempLi);
+      }
+      noticePrevCnt = noticeCurrentCnt;
+    });
+  });
 };
 ```
 
@@ -566,20 +566,20 @@ const graduatePageNotice = () => {
 
 ```js
 const graduatePageCommon = () => {
-   const scrollOpening = () => {
-      let windowHeight = window.innerHeight;
-      let screenTop = window.scrollY;
-      let screenBottom = screenTop + windowHeight - 250;
-      let $sections = getAll('.con-box');
-      $sections.forEach(item => {
-         if (screenBottom >= item.offsetTop) {
-            item.style.opacity = '1';
-            item.style.transform = 'translateY(0)';
-         }
-      });
-   };
-   scrollOpening();
-   window.addEventListener('scroll', scrollOpening);
+  const scrollOpening = () => {
+    let windowHeight = window.innerHeight;
+    let screenTop = window.scrollY;
+    let screenBottom = screenTop + windowHeight - 250;
+    let $sections = getAll(".con-box");
+    $sections.forEach((item) => {
+      if (screenBottom >= item.offsetTop) {
+        item.style.opacity = "1";
+        item.style.transform = "translateY(0)";
+      }
+    });
+  };
+  scrollOpening();
+  window.addEventListener("scroll", scrollOpening);
 };
 ```
 
@@ -601,16 +601,14 @@ const graduatePageCommon = () => {
 
 ```js
 $researchAchievementAchLi.forEach((item, idx) => {
-   item.addEventListener('click', () => {
-      $researchAchievementAchLi.forEach(AchLi => {
-         AchLi.classList.remove('on');
-         AchLi.style.backgroundImage = 'none';
-      });
-      item.classList.add('on');
-      $researchAchievementAchLiImg[
-         idx
-      ].style.backgroundImage = `url(../images/research_industry/research_achievement/research_achievement_${researchAchievementAchImgType[idx]})`;
-   });
+  item.addEventListener("click", () => {
+    $researchAchievementAchLi.forEach((AchLi) => {
+      AchLi.classList.remove("on");
+      AchLi.style.backgroundImage = "none";
+    });
+    item.classList.add("on");
+    $researchAchievementAchLiImg[idx].style.backgroundImage = `url(../images/research_industry/research_achievement/research_achievement_${researchAchievementAchImgType[idx]})`;
+  });
 });
 ```
 
@@ -619,10 +617,8 @@ $researchAchievementAchLi.forEach((item, idx) => {
 ### **스크롤 이벤트 처리**
 
 ```js
-window.addEventListener('scroll', () => {
-   window.scrollY >= $researchAchievementAchBox.offsetTop
-      ? ($researchAchievementTopBtn.style.display = 'block')
-      : ($researchAchievementTopBtn.style.display = 'none');
+window.addEventListener("scroll", () => {
+  window.scrollY >= $researchAchievementAchBox.offsetTop ? ($researchAchievementTopBtn.style.display = "block") : ($researchAchievementTopBtn.style.display = "none");
 });
 ```
 
@@ -638,18 +634,18 @@ window.addEventListener('scroll', () => {
 
 ```js
 const iacgVisRolling = () => {
-   if (iacgVisCnt >= iacgVisLength) {
-      iacgVisCnt = 0;
-   }
-   $iacgVisList.forEach((item, idx) => {
-      item.style.display = 'none';
-   });
-   $iacgVisList[iacgVisCnt].style.display = 'block';
+  if (iacgVisCnt >= iacgVisLength) {
+    iacgVisCnt = 0;
+  }
+  $iacgVisList.forEach((item, idx) => {
+    item.style.display = "none";
+  });
+  $iacgVisList[iacgVisCnt].style.display = "block";
 };
 
 setInterval(() => {
-   iacgVisCnt++;
-   iacgVisRolling();
+  iacgVisCnt++;
+  iacgVisRolling();
 }, 3000);
 ```
 
@@ -658,35 +654,35 @@ iacgVisRolling 함수는 이미지 롤링을 담당하는 함수입니다. setIn
 ### **버튼 클릭 이벤트 리스너**
 
 ```js
-$iacgVisBtnPrev.addEventListener('click', () => {
-   iacgVisCnt--;
-   if (iacgVisCnt < 0) {
-      iacgVisCnt = iacgVisLength - 1;
-   }
-   iacgVisRolling();
+$iacgVisBtnPrev.addEventListener("click", () => {
+  iacgVisCnt--;
+  if (iacgVisCnt < 0) {
+    iacgVisCnt = iacgVisLength - 1;
+  }
+  iacgVisRolling();
 });
 
-$iacgVisBtnNext.addEventListener('click', () => {
-   iacgVisCnt++;
-   if (iacgVisCnt >= iacgVisLength) {
-      iacgVisCnt = 0;
-   }
-   iacgVisRolling();
+$iacgVisBtnNext.addEventListener("click", () => {
+  iacgVisCnt++;
+  if (iacgVisCnt >= iacgVisLength) {
+    iacgVisCnt = 0;
+  }
+  iacgVisRolling();
 });
 
-$iacgVisBtnPause.addEventListener('click', () => {
-   if (iacgVisPaused) {
-      iacVisTimeID = setInterval(() => {
-         iacgVisCnt++;
-         iacgVisRolling();
-      }, 3000);
-      $iacgVisBtnPause.innerText = '일시정지';
-      iacgVisPaused = false;
-   } else {
-      clearInterval(iacVisTimeID);
-      $iacgVisBtnPause.innerText = '재생';
-      iacgVisPaused = true;
-   }
+$iacgVisBtnPause.addEventListener("click", () => {
+  if (iacgVisPaused) {
+    iacVisTimeID = setInterval(() => {
+      iacgVisCnt++;
+      iacgVisRolling();
+    }, 3000);
+    $iacgVisBtnPause.innerText = "일시정지";
+    iacgVisPaused = false;
+  } else {
+    clearInterval(iacVisTimeID);
+    $iacgVisBtnPause.innerText = "재생";
+    iacgVisPaused = true;
+  }
 });
 ```
 
@@ -695,18 +691,18 @@ $iacgVisBtnPause.addEventListener('click', () => {
 ### **메뉴 선택에 따른 리스트 출력**
 
 ```js
-const iacgPlazaMenuMake = title => {
-   let html = '';
-   iacgData[title].forEach(item => {
-      html += `<li>${item}</li>`;
-   });
-   $iacgPlazaList.innerHTML = html;
+const iacgPlazaMenuMake = (title) => {
+  let html = "";
+  iacgData[title].forEach((item) => {
+    html += `<li>${item}</li>`;
+  });
+  $iacgPlazaList.innerHTML = html;
 };
 
 $iacgPlazaMenu.forEach((item, idx) => {
-   item.addEventListener('click', e => {
-      iacgPlazaMenuMake(e.target.innerText);
-   });
+  item.addEventListener("click", (e) => {
+    iacgPlazaMenuMake(e.target.innerText);
+  });
 });
 ```
 
@@ -715,11 +711,11 @@ iacgPlazaMenuMake 함수는 인수로 받은 타이틀에 따라 해당하는 �
 ### **리스트 이전/다음 버튼 클릭 이벤트 리스너**
 
 ```js
-$iacgPlazaMenuPrev.addEventListener('click', e => {
-   // (생략) 이전 버튼 클릭 로직
+$iacgPlazaMenuPrev.addEventListener("click", (e) => {
+  // (생략) 이전 버튼 클릭 로직
 });
-$iacgPlazaMenuNext.addEventListener('click', e => {
-   // (생략) 다음 버튼 클릭 로직
+$iacgPlazaMenuNext.addEventListener("click", (e) => {
+  // (생략) 다음 버튼 클릭 로직
 });
 ```
 
@@ -741,16 +737,16 @@ $iacgPlazaMenuNext.addEventListener('click', e => {
 
 ```js
 $pageBtn.forEach((item, idx) => {
-   item.addEventListener('click', e => {
-      e.preventDefault();
-      for (let i = 0; i < $pageBtn.length; i++) {
-         $pageBtn[i].classList.remove('on');
-      }
-      e.target.classList.add('on');
-      $hits.forEach(hitsItem => {
-         hitsItem.innerHTML = Math.floor(Math.random() * 1000);
-      });
-   });
+  item.addEventListener("click", (e) => {
+    e.preventDefault();
+    for (let i = 0; i < $pageBtn.length; i++) {
+      $pageBtn[i].classList.remove("on");
+    }
+    e.target.classList.add("on");
+    $hits.forEach((hitsItem) => {
+      hitsItem.innerHTML = Math.floor(Math.random() * 1000);
+    });
+  });
 });
 ```
 
@@ -766,12 +762,12 @@ $pageBtn.forEach((item, idx) => {
 
 ```js
 function shuffle() {
-   for (let i = $newsItems.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [$newsItems[i], $newsItems[j]] = [$newsItems[j], $newsItems[i]];
-   }
-   $newsList.innerHTML = '';
-   $newsItems.forEach(item => $newsList.appendChild(item));
+  for (let i = $newsItems.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [$newsItems[i], $newsItems[j]] = [$newsItems[j], $newsItems[i]];
+  }
+  $newsList.innerHTML = "";
+  $newsItems.forEach((item) => $newsList.appendChild(item));
 }
 ```
 
@@ -780,24 +776,24 @@ shuffle 함수를 정의하여 배열 요소의 순서를 랜덤하게 변경하
 ### **클릭 이벤트 리스너**
 
 ```js
-$pageBtn.forEach(item => {
-   item.addEventListener('click', e => {
-      e.preventDefault();
-      for (let i = 0; i < $pageBtn.length; i++) {
-         $pageBtn[i].classList.remove('on');
-      }
-      e.target.classList.add('on');
-      shuffle();
-   });
+$pageBtn.forEach((item) => {
+  item.addEventListener("click", (e) => {
+    e.preventDefault();
+    for (let i = 0; i < $pageBtn.length; i++) {
+      $pageBtn[i].classList.remove("on");
+    }
+    e.target.classList.add("on");
+    shuffle();
+  });
 });
-$newsMenu.forEach(item => {
-   item.addEventListener('click', e => {
-      for (let i = 0; i < $newsMenu.length; i++) {
-         $newsMenu[i].classList.remove('on');
-      }
-      e.target.classList.add('on');
-      shuffle();
-   });
+$newsMenu.forEach((item) => {
+  item.addEventListener("click", (e) => {
+    for (let i = 0; i < $newsMenu.length; i++) {
+      $newsMenu[i].classList.remove("on");
+    }
+    e.target.classList.add("on");
+    shuffle();
+  });
 });
 ```
 
@@ -819,11 +815,11 @@ $pageBtn 배열과 $newsMenu 배열의 각 요소에 클릭 이벤트 리스너�
 ### **팝업 구성 요소 생성**
 
 ```javascript
-$studentActivitiesBoxLiPopUp = document.createElement('div');
-$studentActivitiesBoxLiPopUpTitleText = document.createElement('p');
-$studentActivitiesBoxLiPopUpName = document.createElement('strong');
-$studentActivitiesBoxLiPopUpMainText = document.createElement('p');
-$studentActivitiesBoxLiPopUpMoreLink = document.createElement('a');
+$studentActivitiesBoxLiPopUp = document.createElement("div");
+$studentActivitiesBoxLiPopUpTitleText = document.createElement("p");
+$studentActivitiesBoxLiPopUpName = document.createElement("strong");
+$studentActivitiesBoxLiPopUpMainText = document.createElement("p");
+$studentActivitiesBoxLiPopUpMoreLink = document.createElement("a");
 ```
 
 학생 활동 팝업을 구성하는 요소들을 생성하며 필요한 속성과 클래스를 설정합니다.
@@ -841,8 +837,8 @@ $studentActivitiesBoxLiPopUpMainText.innerHTML = studentActivitiesPopUpData[stud
 ### **자세히 보기 링크 동작 막기**
 
 ```javascript
-$studentActivitiesBoxLiPopUpMoreLink.addEventListener('click', e => {
-   e.preventDefault();
+$studentActivitiesBoxLiPopUpMoreLink.addEventListener("click", (e) => {
+  e.preventDefault();
 });
 ```
 
@@ -869,11 +865,11 @@ for문을 사용하여 학생 활동 리스트를 9개씩 생성합니다. 이 �
 ### **마우스 포인터 이벤트 처리**
 
 ```javascript
-$studentActivitiesBoxLi.addEventListener('mouseenter', e => {
-   e.currentTarget.children[1].style.display = 'flex';
+$studentActivitiesBoxLi.addEventListener("mouseenter", (e) => {
+  e.currentTarget.children[1].style.display = "flex";
 });
-$studentActivitiesBoxLi.addEventListener('mouseleave', e => {
-   e.currentTarget.children[1].style.display = 'none';
+$studentActivitiesBoxLi.addEventListener("mouseleave", (e) => {
+  e.currentTarget.children[1].style.display = "none";
 });
 ```
 
@@ -882,18 +878,18 @@ $studentActivitiesBoxLi.addEventListener('mouseleave', e => {
 ### **학생 이미지 클릭 이벤트 처리**
 
 ```javascript
-$studentActivitiesBoxLi.addEventListener('click', e => {
-   if (e.currentTarget.lastElementChild.classList.contains('on')) {
-      e.currentTarget.lastElementChild.classList.remove('on');
-   } else {
-      if (selectedActivitiesBoxLiPopUp !== null) {
-         selectedActivitiesBoxLiPopUp.classList.remove('on');
-         selectedActivitiesBoxLiPopUp = null;
-         popupBanner(e);
-      } else {
-         popupBanner(e);
-      }
-   }
+$studentActivitiesBoxLi.addEventListener("click", (e) => {
+  if (e.currentTarget.lastElementChild.classList.contains("on")) {
+    e.currentTarget.lastElementChild.classList.remove("on");
+  } else {
+    if (selectedActivitiesBoxLiPopUp !== null) {
+      selectedActivitiesBoxLiPopUp.classList.remove("on");
+      selectedActivitiesBoxLiPopUp = null;
+      popupBanner(e);
+    } else {
+      popupBanner(e);
+    }
+  }
 });
 ```
 
@@ -910,14 +906,14 @@ $studentActivitiesBoxLi.addEventListener('click', e => {
 ```javascript
 facilityInformationSize = parseInt(getComputedStyle($facilityInformationBgTextList).width) * -2;
 setInterval(() => {
-   facilityInformationLeftX = parseInt(getComputedStyle($facilityInformationBgText).left);
-   if (facilityInformationLeftX <= facilityInformationSize) {
-      $facilityInformationBgText.style.left = '0px';
-      facilityInformationTextX = 0;
-   } else {
-      facilityInformationTextX -= facilityInformationStep;
-      $facilityInformationBgText.style.left = `${facilityInformationTextX}px`;
-   }
+  facilityInformationLeftX = parseInt(getComputedStyle($facilityInformationBgText).left);
+  if (facilityInformationLeftX <= facilityInformationSize) {
+    $facilityInformationBgText.style.left = "0px";
+    facilityInformationTextX = 0;
+  } else {
+    facilityInformationTextX -= facilityInformationStep;
+    $facilityInformationBgText.style.left = `${facilityInformationTextX}px`;
+  }
 }, 30);
 ```
 
@@ -927,15 +923,15 @@ setInterval(() => {
 
 ```javascript
 const facilityInformationSlider = () => {
-   facilityInformationImg.forEach(item => {
-      const viewportBottom = window.innerHeight + window.scrollY;
-      const imageHalfBottom = item.offsetTop + item.offsetHeight / 2;
-      const isHalfShown = viewportBottom > imageHalfBottom;
-      if (isHalfShown) item.classList.add('on');
-   });
+  facilityInformationImg.forEach((item) => {
+    const viewportBottom = window.innerHeight + window.scrollY;
+    const imageHalfBottom = item.offsetTop + item.offsetHeight / 2;
+    const isHalfShown = viewportBottom > imageHalfBottom;
+    if (isHalfShown) item.classList.add("on");
+  });
 };
 facilityInformationSlider();
-window.addEventListener('scroll', facilityInformationSlider);
+window.addEventListener("scroll", facilityInformationSlider);
 ```
 
 시설 정보 이미지를 스크롤에 따라 애니메이션되도록 설정합니다. 이미지의 절반 위치가 보이는 시점에서 애니메이션을 활성화합니다.
@@ -950,8 +946,8 @@ window.addEventListener('scroll', facilityInformationSlider);
 
 ```javascript
 const festivalEventMakeVideo = () => {
-   $festivalEventVideoPopupIframe.setAttribute('src', festivalEventVideoData[festivalEventCnt].videoSrc);
-   $festivalEventVideoPopupIframe.setAttribute('title', festivalEventVideoData[festivalEventCnt].videoTitle);
+  $festivalEventVideoPopupIframe.setAttribute("src", festivalEventVideoData[festivalEventCnt].videoSrc);
+  $festivalEventVideoPopupIframe.setAttribute("title", festivalEventVideoData[festivalEventCnt].videoTitle);
 };
 ```
 
@@ -961,16 +957,16 @@ const festivalEventMakeVideo = () => {
 
 ```javascript
 $festivalEventListImg.forEach((item, idx) => {
-   item.addEventListener('click', () => {
-      festivalEventCnt = idx;
-      festivalEventMakeVideo();
-      $festivalEventBgForPopup.classList.add('on');
-      $festivalEventVideoPopup.classList.add('on');
-      $festivalEventBgForPopup.addEventListener('click', e => {
-         e.currentTarget.classList.remove('on');
-         $festivalEventVideoPopup.classList.remove('on');
-      });
-   });
+  item.addEventListener("click", () => {
+    festivalEventCnt = idx;
+    festivalEventMakeVideo();
+    $festivalEventBgForPopup.classList.add("on");
+    $festivalEventVideoPopup.classList.add("on");
+    $festivalEventBgForPopup.addEventListener("click", (e) => {
+      e.currentTarget.classList.remove("on");
+      $festivalEventVideoPopup.classList.remove("on");
+    });
+  });
 });
 ```
 
@@ -990,7 +986,7 @@ $festivalEventListImg.forEach((item, idx) => {
 이를 통해 기술적 지식을 향상시키고 발전시킬 수 있는 기회를 제공하고자 합니다.  
 세부 목표는 다음과 같습니다.
 
--  **HTML, CSS, JS 기술 연습**: 기존 홈페이지를 참고하여 웹 개발 기술을 연습하는데 초점을 맞춥니다. 이를 통해 웹 디자인 및 인터페이스 작성, DOM 조작, 이벤트 처리 등의 다양한 개념을 실습할 수 있습니다.
--  **새로운 홈페이지 껍데기 제작**: 기존 홈페이지의 구조 및 디자인을 바탕으로 새로운 홈페이지 껍데기를 완성합니다. 연습 목적이므로, 모듈화와 같은 구조 개선은 배제하고 주로 외관과 동작에 집중할 수 있습니다.
--  **기술적 역량 강화**: 본 프로젝트를 통해 HTML, CSS, JS와 같은 웹 개발 기술에 대한 지식 및 실력을 향상시킬 수 있습니다. 이를 바탕으로 추후 개발 프로젝트에서 보다 높은 퀄리티의 작업을 수행할 수 있게 됩니다.
--  **포트폴리오 구축**: 프로젝트를 완료한 후에 이를 포트폴리오로 활용할 수 있습니다. 이를 통해 실제 웹 개발 업무 수행 능력을 입증하고, 개발자로서의 경쟁력을 강화할 수 있습니다.
+- **HTML, CSS, JS 기술 연습**: 기존 홈페이지를 참고하여 웹 개발 기술을 연습하는데 초점을 맞춥니다. 이를 통해 웹 디자인 및 인터페이스 작성, DOM 조작, 이벤트 처리 등의 다양한 개념을 실습할 수 있습니다.
+- **새로운 홈페이지 껍데기 제작**: 기존 홈페이지의 구조 및 디자인을 바탕으로 새로운 홈페이지 껍데기를 완성합니다. 연습 목적이므로, 모듈화와 같은 구조 개선은 배제하고 주로 외관과 동작에 집중할 수 있습니다.
+- **기술적 역량 강화**: 본 프로젝트를 통해 HTML, CSS, JS와 같은 웹 개발 기술에 대한 지식 및 실력을 향상시킬 수 있습니다. 이를 바탕으로 추후 개발 프로젝트에서 보다 높은 퀄리티의 작업을 수행할 수 있게 됩니다.
+- **포트폴리오 구축**: 프로젝트를 완료한 후에 이를 포트폴리오로 활용할 수 있습니다. 이를 통해 실제 웹 개발 업무 수행 능력을 입증하고, 개발자로서의 경쟁력을 강화할 수 있습니다.
